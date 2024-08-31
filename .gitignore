@@ -1,0 +1,6 @@
+env_gsql
+.env
+play.ipynb
+student.db
+student.db-journal
+
