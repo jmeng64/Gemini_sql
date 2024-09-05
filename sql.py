@@ -71,16 +71,18 @@ if submit:
     response_sql = get_gemini_response(question, prompt )
     print(response_sql)
 
-    response = read_sql_query(response_sql, "student.db")
+    response = response_sql
+    # response = read_sql_query(response_sql, "student.db")
 
     st.subheader("Query results:")
+    st.header(responses)
 
-
+''' 
     for row in response: 
         print(row)
         st.header(row)
 
-    
+''' 
 
 
 
