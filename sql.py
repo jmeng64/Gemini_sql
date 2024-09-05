@@ -74,8 +74,8 @@ if submit:
     response = response_sql
     # response = read_sql_query(response_sql, "student.db")
 
-    st.subheader("Query results:")
-    st.header(responses)
+    st.subheader(responses_sql)
+    st.header(response)
 
 ''' 
     for row in response: 
