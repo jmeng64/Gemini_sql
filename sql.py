@@ -1,5 +1,9 @@
-from dotenv import load_dotenv 
-load_dotenv() 
+
+# this is for local machine.  
+# from dotenv import load_dotenv 
+# load_dotenv() 
+
+# for cloud, set up a secret key GOOGLE_API_KEY
 
 import streamlit as st 
 import os 
@@ -64,8 +68,13 @@ submit=st.button("Go ahead. Submit the question")
 # if submit is clicked 
 
 if submit: 
-    response = get_gemini_response(question, prompt )
-    st.subheader("Response:")
+    response_sql = get_gemini_response(question, prompt )
+    print(response_sql)
+
+    response = read_sql_query(response_sql, "student.db")
+
+    st.subheader("Query results:")
+
 
     for row in response: 
         print(row)
