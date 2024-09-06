@@ -29,12 +29,30 @@ def read_sql_query(sql, db):
     
     conn =sqlite3.connect(db)
     cur = conn.cursor() 
-    cur.execute(sql)
-    rows=cur.fetchall() 
+        
+    try:
+        # Execute the provided SQL query
+        cur.execute(sql)
+        
+        # Fetch all rows from the executed query
+        rows = cur.fetchall()
+        
+        # Print each row
+        for row in rows:  print(row)
+               
+        # Return the fetched rows
+        return rows
+    
+    except sqlite3.Error as e:
+        # Handle any potential errors
+        print(f"An error occurred: {e}")
+        return [f"An error occurred: {e}"]
+    
+    finally:
+        # Ensure the connection is closed
+        conn.close()
 
-    for row in rows: print(row)
 
-    return rows 
 
 
 ## defining your prompt 
@@ -71,7 +89,7 @@ if submit:
     response_sql = get_gemini_response(question, prompt )
     print(response_sql)
 
-    response = read_sql_query(response_sql, "student.db")
+    response = read_sql_query(response_sql, "student2.db")
 
     st.subheader(response_sql)
     

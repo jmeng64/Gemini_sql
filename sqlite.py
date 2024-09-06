@@ -4,7 +4,7 @@ import sqlite3
 ## connection to SQLite
 
 
-connection = sqlite3.connect("student.db")
+connection = sqlite3.connect("student2.db")
 
 ## create a cursor object to insert record, create table 
 
@@ -30,6 +30,8 @@ cursor.execute( ''' insert into STUDENT VALUES('Krish', 'Data Science', 'A') '''
 cursor.execute( ''' insert into STUDENT VALUES('Rob', 'Chemistry', 'E') ''' )
 cursor.execute( ''' insert into STUDENT VALUES('Amy', 'Prompt Engineering', 'F') ''' )
 
+connection.commit()
+
 ## displayt the records 
 
 print("Here are the inserted records so far")
@@ -37,4 +39,6 @@ print("Here are the inserted records so far")
 data=cursor.execute(''' select * from STUDENT ''' )
 for row in data: 
     print(row )
+
+connection.close() 
 
